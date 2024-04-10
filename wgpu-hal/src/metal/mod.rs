@@ -98,7 +98,7 @@ impl crate::Instance for Instance {
         window_handle: raw_window_handle::RawWindowHandle,
     ) -> Result<Surface, crate::InstanceError> {
         match window_handle {
-            #[cfg(target_os = "ios")]
+            #[cfg(any(target_os = "ios", target_os = "tvos"))]
             raw_window_handle::RawWindowHandle::UiKit(handle) => {
                 let _ = &self.managed_metal_layer_delegate;
                 Ok(unsafe { Surface::from_view(handle.ui_view.as_ptr(), None) })

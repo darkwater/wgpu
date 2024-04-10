@@ -124,7 +124,7 @@ impl super::Surface {
             let new_layer: *mut Object = msg_send![class, new];
             let frame: CGRect = msg_send![main_layer, bounds];
             let () = msg_send![new_layer, setFrame: frame];
-            #[cfg(target_os = "ios")]
+            #[cfg(any(target_os = "ios", target_os = "tvos"))]
             {
                 // Unlike NSView, UIView does not allow to replace main layer.
                 let () = msg_send![main_layer, addSublayer: new_layer];
@@ -203,7 +203,7 @@ impl crate::Surface for super::Surface {
         // create one as a sublayer. However, when the view changes size,
         // its sublayers are not automatically resized, and we must resize
         // it here. The drawable size and the layer size don't correlate
-        #[cfg(target_os = "ios")]
+        #[cfg(any(target_os = "ios", target_os = "tvos"))]
         {
             if let Some(view) = self.view {
                 let main_layer: *mut Object = msg_send![view.as_ptr(), layer];

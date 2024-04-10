@@ -1,5 +1,5 @@
 #![no_main]
-#[cfg(not(any(target_arch = "wasm32", target_os = "ios")))]
+#[cfg(not(any(target_arch = "wasm32", target_os = "ios", target_os = "tvos")))]
 mod fuzz {
     use arbitrary::Arbitrary;
     use libfuzzer_sys::fuzz_target;

@@ -39,7 +39,7 @@ mod macros {
             feature = "vulkan-portability"
         ))]
         wgpu_types::Backend::Vulkan => $($c)*.$method::<wgpu_core::api::Vulkan> $params,
-        #[cfg(all(not(target_arch = "wasm32"), any(target_os = "ios", target_os = "macos")))]
+        #[cfg(all(not(target_arch = "wasm32"), any(target_os = "ios", target_os = "tvos", target_os = "macos")))]
         wgpu_types::Backend::Metal => $($c)*.$method::<wgpu_core::api::Metal> $params,
         #[cfg(all(not(target_arch = "wasm32"), windows))]
         wgpu_types::Backend::Dx12 => $($c)*.$method::<wgpu_core::api::Dx12> $params,

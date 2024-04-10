@@ -1762,7 +1762,7 @@ impl Instance {
             }
 
             // Vulkan on Mac/iOS is only available through vulkan-portability.
-            if (cfg!(target_os = "ios") || cfg!(target_os = "macos"))
+            if (cfg!(target_os = "ios") || cfg!(target_os = "tvos") || cfg!(target_os = "macos"))
                 && cfg!(feature = "vulkan-portability")
             {
                 backends = backends.union(Backends::VULKAN);

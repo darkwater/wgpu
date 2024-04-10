@@ -150,7 +150,7 @@ fn collect_validation_jobs(jobs: &mut Vec<Job>, cmd: ValidateSubcommand) -> anyh
                     | ValidateSubcommand::Spirv
                     | ValidateSubcommand::Glsl
                     | ValidateSubcommand::Dot => true,
-                    ValidateSubcommand::Metal => cfg!(any(target_os = "macos", target_os = "ios")),
+                    ValidateSubcommand::Metal => cfg!(any(target_os = "macos", target_os = "ios", target_os = "tvos")),
                     // The FXC compiler is only available on Windows.
                     //
                     // The DXC compiler can be built and run on any platform,

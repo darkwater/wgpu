@@ -9,7 +9,7 @@ fn main() {
         Emscripten: { all(target_os = "emscripten", gles) },
         dx12: { all(target_os = "windows", feature = "dx12") },
         gles: { all(feature = "gles") },
-        metal: { all(any(target_os = "ios", target_os = "macos"), feature = "metal") },
+        metal: { all(any(target_os = "ios", target_os = "tvos", target_os = "macos"), feature = "metal") },
         vulkan: { all(not(target_arch = "wasm32"), feature = "vulkan") }
     }
 }
